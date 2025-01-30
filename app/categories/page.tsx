@@ -1,6 +1,7 @@
 import { fetchCategories } from "@/actions/categories"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Eye, Trash, Trash2 } from "lucide-react"
 import Link from "next/link"
 
 export default async function CategoryList() {
@@ -19,13 +20,25 @@ const categories = await fetchCategories()
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((category, i) => (
-            <Card key={i}>
+            <Card key={i} className="relative">
               <CardHeader>
-                <CardTitle>{category.title}</CardTitle>
+                <CardTitle>
+                <div className="container flex justify-between">
+                  <div className="">{category.title}</div>
+                  <div className="flex space-x-2 justify-center items-center">
+                    {/* Icons */}
+                    <Eye size={16} color="gray" />
+                    <Trash2 color="red" size={16} />
+                  </div>
+                </div>
+                </CardTitle>   
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">{category.description}</p>
               </CardContent>
+              <div className="absolute right-6 bottom-2">
+              <p className="underline text-sm text-blue-500">View</p>
+              </div>
             </Card>
           ))}
         </div>

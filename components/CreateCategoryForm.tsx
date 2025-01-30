@@ -46,9 +46,17 @@ export default function CreateCategoryForm() {
       <div>
         <Label htmlFor="description">Description</Label>
         <Textarea id="description" {
-          ...register('description', { required: true })
+          ...register('description', { required: true, maxLength: {
+            value: 50, // Set your max length here
+            message: 'Maximum length is 50 characters'
+        } })
         } />
-        {errors?.description && <span className="text-red-500">This field is required</span>}
+         {errors.description?.type === 'required' && (
+                    <span className="text-red-500">This field is required</span>
+                )}
+                {errors.description?.type === 'maxLength' && (
+                    <span className="text-red-500">{errors.description.message}</span>
+                )}
       </div>
       <Button type="submit">{loading === true? 'Creating...': 'Create Category'}</Button>
     </form>
