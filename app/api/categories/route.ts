@@ -15,7 +15,7 @@ export async function POST (request: NextRequest) {
             error: null,
         },{status:201})
     } catch (error) {
-        // console.log(error)
+        console.log(error)
         return NextResponse.json({
             message: 'Failed',
             error: true,
@@ -34,7 +34,7 @@ export async function GET() {
             error: null,
         },{status:200})
     } catch (error) {
-        // console.log(error)
+        console.log(error)
         return NextResponse.json({
             message: 'Failed',
             data: null,
