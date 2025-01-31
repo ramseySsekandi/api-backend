@@ -1,10 +1,10 @@
 import { fetchCategories } from "@/actions/categories"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Pen, Trash2 } from "lucide-react"
 import Link from "next/link"
 
 export default async function CategoryList() {
+  
 const categories = await fetchCategories()
   return (
     <div className="space-y-4">
@@ -23,14 +23,7 @@ const categories = await fetchCategories()
             <Card key={i} className="relative">
               <CardHeader>
                 <CardTitle>
-                <div className="container flex justify-between">
                   <div className="">{category.title}</div>
-                  <div className="flex space-x-2 justify-center items-center">
-                    {/* Icons */}
-                    <Pen size={16} color="gray" />
-                    <Trash2 color="red" size={16} />
-                  </div>
-                </div>
                 </CardTitle>   
               </CardHeader>
               <CardContent>

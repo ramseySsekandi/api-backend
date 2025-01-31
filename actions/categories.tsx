@@ -26,6 +26,5 @@ export const fetchCategory  = async (id:string) => {
     } catch (error) {
         console.log(error)
        return null
-    }
-     
+    }   
 }
